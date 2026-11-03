@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Academy - O'quv Markazi</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Font Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased">
+
+    <!-- ADMIN TELEGRAM BOT SOZLAMALARI BARI -->
+    <div id="botConfigBar" class="bg-emerald-900/80 text-emerald-100 text-xs py-2 px-4 border-b border-emerald-700/50 text-center">
+        <div class="container mx-auto flex justify-between items-center">
+            <span class="flex items-center gap-2">
+                <i class="fa-solid fa-paper-plane text-emerald-400"></i>
+                <b>Telegram Bot Tizimi Sozlangan!</b> Ro'yxatdan o'tishlar avto-botga boradi.
+            </span>
+            <button onclick="openSettingsModal()" class="underline hover:text-white font-semibold transition">
+                <i class="fa-solid fa-gear mr-1"></i> Bot Sozlamalari
+            </button>
+        </div>
+    </div>
+
+    <!-- MAIN BANNER (LOGOTIP KODGA BIRIKTIRILGAN VARIANTA) -->
+    <header class="hero-banner relative py-12 px-4 md:py-16 text-center border-b border-slate-800 bg-slate-950">
+        <div class="max-w-4xl mx-auto flex flex-col items-center">
+            
+            <!-- LOGOTIP (Faylga bog'liq bo'lmagan, har qanday serverda ishlaydigan rasm) -->
+            <div class="relative mb-4">
+                <img 
+                    src="smart_academy.png" 
+                    alt="Smart Academy Logo" 
+                    onerror="this.onerror=null; this.src='rasmlar/smart_academy.png';" 
+                    class="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover shadow-2xl border-2 border-emerald-500/80 bg-slate-900 p-1"
+                >
+            </div>
+
+            <!-- NICKNAME & TITLE -->
+            <p class="text-emerald-400 font-medium text-sm md:text-base tracking-wide mb-1">
+                @smartacademyuz
+            </p>
+            <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4">
+                SMART ACADEMY
+            </h1>
+
+            <!-- DESCRIPTIONS -->
+            <p class="text-slate-200 text-sm md:text-lg max-w-2xl leading-relaxed mb-3">
+                Smart Academy uz O'quv markaziga Xush kelibsiz! Maqsad 🎯 | ilm 📘 | Xarakat 🏃 | Natija 🏆 | Yuksalish 📈
+            </p>
+            <p class="text-slate-400 text-xs md:text-sm italic mb-6">
+                “Smart Academy” O'quv Markazi
+            </p>
+
+            <!-- CONTACT & SINGLE LOCATION -->
+            <div class="flex flex-col gap-2 text-xs md:text-sm text-slate-300 bg-slate-900/90 p-4 rounded-xl border border-slate-800 max-w-xl w-full">
+                <div class="flex items-center justify-center gap-2">
+                    <span class="text-rose-500">☎️</span>
+                    <span>Murojaat uchun tel: </span>
+                    <a href="tel:+998993263393" class="text-emerald-400 font-bold hover:underline">+998993263393</a> / 
+                    <a href="tel:+998913263393" class="text-emerald-400 font-bold hover:underline">+998913263393</a> / 
+                    <a href="tel:905882271" class="text-emerald-400 font-bold hover:underline">905882271</a>
+                </div>
+                <div class="flex items-center justify-center gap-2 text-slate-200">
+                    <span class="text-rose-500">📌</span>
+                    <span class="font-medium">Manzil: Qo'qon shahri, Yangi bozor hududi (most tagida, Naymancha svetofori yoni)</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- KURSLAR KATALOGI -->
+    <main class="container mx-auto px-4 py-12">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
+            <div>
+                <h2 class="text-2xl md:text-3xl font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-graduation-cap text-emerald-400"></i> Bizning Kurslarimiz
+                </h2>
+                <p class="text-slate-400 text-sm mt-1">O'zingizga mos yo'nalishni tanlang va ro'yxatdan o'ting</p>
+            </div>
+        </div>
+
+        <!-- COURSES GRID -->
+        <div id="coursesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- JavaScript orqali 10 ta kurs yuklanadi -->
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8 text-center text-slate-400 text-sm">
+        <p>© 2026 Smart Academy. Barcha huquqlarhimoyalangan.</p>
+    </footer>
+
+    <!-- RO'YXATDAN O'TISH MODALI -->
+    <div id="regModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-xl font-bold text-white mb-1" id="modalCourseTitle">Kursga Ro'yxatdan O'tish</h3>
+            <p class="text-xs text-slate-400 mb-4">Ma'lumotlaringizni kiriting, biz siz bilan bog'lanamiz.</p>
+            
+            <form id="regForm" onsubmit="handleRegistration(event)" class="space-y-4">
+                <input type="hidden" id="selectedCourseInput">
+                
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Ism va Familiyangiz</label>
+                    <input type="text" id="userName" required placeholder="Masalan: Ali Valiyev" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Telefon Raqamingiz</label>
+                    <input type="tel" id="userPhone" required placeholder="+998 90 123 45 67" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">O'quv Markaz Manzili</label>
+                    <input type="text" value="Qo'qon: Yangi bozor hududi (most tagi, Naymancha svetofori yoni)" readonly class="w-full bg-slate-800/60 border border-slate-700/60 rounded-lg px-3 py-2 text-xs text-slate-300 focus:outline-none cursor-not-allowed">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Dars Vaqti</label>
+                    <select id="userTime" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-emerald-500">
+                        <option value="Ertalabki guruh (09:00 - 12:00)">Ertalabki guruh (09:00 - 12:00)</option>
+                        <option value="Tushki guruh (14:00 - 17:00)">Tushki guruh (14:00 - 17:00)</option>
+                        <option value="Kechki guruh (17:00 - 20:00)">Kechki guruh (17:00 - 20:00)</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 rounded-xl transition flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-paper-plane"></i> Ariza Yuborish
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- BOT SETTINGS MODAL -->
+    <div id="settingsModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 relative">
+            <button onclick="closeSettingsModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+            <h3 class="text-xl font-bold text-white mb-2">Telegram Bot Sozlamalari</h3>
+            <p class="text-xs text-slate-400 mb-4">Arizalar tushadigan Telegram Bot tokeni va Chat ID raqamingizni kiriting:</p>
+            
+            <div class="space-y-3">
+                <div>
+                    <label class="block text-xs text-slate-300 mb-1">Bot Token</label>
+                    <input type="text" id="botTokenInput" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                </div>
+                <div>
+                    <label class="block text-xs text-slate-300 mb-1">Chat ID (Admin ID)</label>
+                    <input type="text" id="chatIdInput" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-3 py-2 text-xs text-white">
+                </div>
+                <button onclick="saveBotSettings()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2 rounded-lg text-sm">
+                    Saqlash
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT KODI -->
+    <script>
+        // Default Bot Sozlamalari
+        let BOT_TOKEN = localStorage.getItem('sm_bot_token') || "8344102229:AAHlrfugqclWB7gqS2q8z9MBNBpREVQvmp0";
+        let CHAT_ID = localStorage.getItem('sm_chat_id') || "8572806180";
+
+        // KURSLAR RO'YXATI (Barchasida: 1 oy)
+        const courses = [
+            { id: 1, title: "Mental arifmetika", icon: "fa-brain", color: "from-pink-500 to-rose-600", desc: "Miya faoliyatini rivojlantirish, tezkor hisob-kitob va mantiqiy fikrlash kursi." },
+            { id: 2, title: "Rus tili", icon: "fa-language", color: "from-blue-500 to-indigo-600", desc: "So'zlashuv, grammatika va erkin muloqot qilish ko'nikmalarini oshirish." },
+            { id: 3, title: "Ingliz tili", icon: "fa-earth-americas", color: "from-red-500 to-amber-600", desc: "General English, IELTS tayyorlov va interaktiv muloqot darslari." },
+            { id: 4, title: "Arab tili", icon: "fa-kaaba", color: "from-emerald-500 to-teal-600", desc: "Alifbo, tajvid va to'g'ri qiroat qilish, arab tili grammatikasi asoslari." },
+            { id: 5, title: "Kompyuter savodxonligi", icon: "fa-desktop", color: "from-cyan-500 to-blue-600", desc: "Windows, MS Office (Word, Excel), internet xavfsizligi va AT asoslari." },
+            { id: 6, title: "Web dasturlash", icon: "fa-code", color: "from-violet-500 to-purple-600", desc: "Frontend va Backend asoslari: HTML, CSS, JavaScript, React va veb texnologiyalar." },
+            { id: 7, title: "Dasturlash", icon: "fa-laptop-code", color: "from-amber-500 to-orange-600", desc: "Mantiq, algoritm, Python hamda zamonaviy dasturlash asoslari." },
+            { id: 8, title: "Mobil dasturlash", icon: "fa-mobile-screen-button", color: "from-fuchsia-500 to-pink-600", desc: "Android va iOS qurilmalari uchun mobil ilovalar yaratish." },
+            { id: 9, title: "SMM", icon: "fa-hashtag", color: "from-sky-500 to-blue-600", desc: "Ijtimoiy tarmoqlarda targ'ibot, targeting, kontent reja va brendni rivojlantirish." },
+            { id: 10, title: "Grafik dizayn", icon: "fa-palette", color: "from-rose-500 to-red-600", desc: "Photoshop, Illustrator dasturlarida professional dizaynlar va logotiplar yaratish." }
+        ];
+
+        // KURSLARNI EKRANGA CHIQARISH
+        function renderCourses() {
+            const grid = document.getElementById('coursesGrid');
+            grid.innerHTML = courses.map(course => `
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-slate-700 transition flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gradient-to-r ${course.color} p-6 text-white flex justify-between items-center">
+                            <i class="fa-solid ${course.icon} text-4xl"></i>
+                            <span class="bg-black/30 backdrop-blur-md text-xs font-bold px-3 py-1 rounded-full border border-white/20">
+                                <i class="fa-regular fa-clock mr-1"></i> 1 oy
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">${course.title}</h3>
+                            <p class="text-slate-400 text-sm mb-4 leading-relaxed">${course.desc}</p>
+                            
+                            <div class="bg-slate-950/60 p-3 rounded-xl border border-slate-800 text-xs text-slate-300 mb-2 flex items-start gap-2">
+                                <i class="fa-solid fa-circle-info text-emerald-400 mt-0.5"></i>
+                                <span>Oylik to'lov o'quvchining yoshi va dars vaqtiga qarab belgilanadi (1 oyda 1 marta).</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6 pt-0">
+                        <button onclick="openModal('${course.title}')" class="w-full bg-slate-800 hover:bg-emerald-600 text-white font-semibold py-3 px-4 rounded-xl transition border border-slate-700 hover:border-emerald-500 flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-pen-to-square"></i> Ro'yxatdan O'tish
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // MODAL VA FORM ISHLATISH
+        function openModal(courseTitle) {
+            document.getElementById('modalCourseTitle').innerText = courseTitle + " - Ro'yxatdan o'tish";
+            document.getElementById('selectedCourseInput').value = courseTitle;
+            document.getElementById('regModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('regModal').classList.add('hidden');
+        }
+
+        function openSettingsModal() {
+            document.getElementById('botTokenInput').value = BOT_TOKEN;
+            document.getElementById('chatIdInput').value = CHAT_ID;
+            document.getElementById('settingsModal').classList.remove('hidden');
+        }
+
+        function closeSettingsModal() {
+            document.getElementById('settingsModal').classList.add('hidden');
+        }
+
+        function saveBotSettings() {
+            BOT_TOKEN = document.getElementById('botTokenInput').value.trim();
+            CHAT_ID = document.getElementById('chatIdInput').value.trim();
+            localStorage.setItem('sm_bot_token', BOT_TOKEN);
+            localStorage.setItem('sm_chat_id', CHAT_ID);
+            alert("Bot sozlamalari saqlandi!");
+            closeSettingsModal();
+        }
+
+        // TELEGRAM BOTGA YUBORISH
+        async function handleRegistration(e) {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Yuborilmoqda...`;
+
+            const course = document.getElementById('selectedCourseInput').value;
+            const name = document.getElementById('userName').value.trim();
+            const phone = document.getElementById('userPhone').value.trim();
+            const time = document.getElementById('userTime').value;
+
+            const text = `🎓 <b>YANGI ARIZA (Smart Academy)</b>\n\n` +
+                         `📚 <b>Kurs:</b> ${course}\n` +
+                         `👤 <b>Ism:</b> ${name}\n` +
+                         `📞 <b>Tel:</b> ${phone}\n` +
+                         `📌 <b>Manzil:</b> Qo'qon (Yangi bozor / Naymancha)\n` +
+                         `⏰ <b>Vaqt:</b> ${time}`;
+
+            try {
+                if (BOT_TOKEN && CHAT_ID) {
+                    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: CHAT_ID,
+                            text: text,
+                            parse_mode: 'HTML'
+                        })
+                    });
+                }
+                alert("Arizangiz muvaffaqiyatli yuborildi! Tez orada siz bilan bog'lanamiz.");
+                document.getElementById('regForm').reset();
+                closeModal();
+            } catch (err) {
+                alert("Xatolik yuz berdi. Iltimos telefon orqali bog'laning.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Ariza Yuborish`;
+            }
+        }
+
+        // Dastur boshlanishi
+        renderCourses();
+    </script>
+</body>
+</html>
